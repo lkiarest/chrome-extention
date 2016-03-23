@@ -13,9 +13,13 @@
             tabs.forEach(function(tab, i) {
                 chrome.tabs.sendRequest(tab.id, {action: "GetText"}, function (response) {
                     console.log(response);
-                    if (response) {
+                    if (response && response.result) {
+                        var order = response.result;
+                        if ($("chk-four").checked) {
+                            order = order.substring(0, 4);
+                        }
                         var li = document.createElement("li");
-                        li.innerText = response.result;
+                        li.innerText = order;
                         ul.appendChild(li);
                     }
                 });
