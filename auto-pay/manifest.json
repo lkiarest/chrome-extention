@@ -1,0 +1,22 @@
+{
+  "name": "GoldenIt",
+  "version": "0.9",
+  "manifest_version": 2,
+  "description": "自动投注工具",
+  "browser_action": {
+    "default_icon": "icon.png" ,
+    "default_title": "开始下注",
+    "default_popup": "index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://www.pceggs.com/play/pxya.aspx"],
+      "js": ["backend/list.js"]
+    },
+    {
+      "matches": ["http://www.pceggs.com/play/pg28Insert.aspx?LID=*"],
+      "js": ["backend/edit.js"]
+    }
+  ],
+  "permissions": ["tabs"]
+}
